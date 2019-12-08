@@ -139,7 +139,7 @@ for iterator = 1:Iterations
                
             end
                                
-            %Copy the jobs that Parent1 contains in J2 to Children2, 
+            %Copy the artifacts that Parent1 contains in J2 to Children2, 
             %and Parent2 contains in J2 to Children1 in their order.
             for index=1:len_of_chromosome
                 if Parent1(index)~=0
@@ -158,12 +158,12 @@ for iterator = 1:Iterations
                         end   
                     end
                 end
-            end   %POX Cross over         
+            end   %POX交叉操作完毕             
         else  
         Children1 = Parent1;
         Children2 = Parent2;  
         end
-        
+        %交叉完毕后会得到两个子代,随机选取一个加入后代组
 
 %        condtion = rand(1);
         for gene = 1:len_of_chromosome
@@ -186,8 +186,8 @@ for iterator = 1:Iterations
         end
         if rand(1)<Pm
             for j=1:4
-                pos1=randi([1,len_of_chromosome]);                         % Choose the sequence number of a gene to be mutated
-                pos2=randi([1,len_of_chromosome]);                         % Choose the another sequence number of a gene to be mutated
+                pos1=randi([1,len_of_chromosome]); % 选择一个要变异的基因的序号
+                pos2=randi([1,len_of_chromosome]); % 再选择一个要变异的基因的序号
 
                 Gene=temp(pos1); 
                 temp(pos1)=temp(pos2);
@@ -202,7 +202,7 @@ for iterator = 1:Iterations
     end
     %变异完毕
     
-   %% rebuilt population
+   %% 重新构建种群
    % population=[ Children_group1;Children_group2;BestChromosome ];
     population=[ Children_group2;BestChromosome ];
     Chromosome = BestChromosome;
